@@ -42,7 +42,7 @@ def create_recipe(user, **params):
         'time_minutes': 22,
         'price': Decimal('5.25'),
         'description': 'Sample description',
-        'link': 'http"//example.com/recipe.pdf'
+        'link': 'http://example.com/recipe.pdf'
     }
     defaults.update(params)
 
@@ -74,7 +74,7 @@ class PrivateRecipeApiTests(TestCase):
         self.user = create_user(email='user@example.com', password = 'test123')
         self.client.force_authenticate(self.user)
 
-    def test_retrive_recipes(self):
+    def test_retrieve_recipes(self):
         """Test retrieving a list of recipes."""
         create_recipe(user=self.user)
         create_recipe(user=self.user)
@@ -201,7 +201,7 @@ class PrivateRecipeApiTests(TestCase):
         res = self.client.delete(url)
 
         self.assertEqual(res.status_code, status.HTTP_404_NOT_FOUND)
-        self.assertTrue(Recipe.objects.filter(id=recipe.id).exists)
+        self.assertTrue(Recipe.objects.filter(id=recipe.id).exists())
 
     def test_create_recipe_with_new_tags(self):
         """Test creating a recipe with new tags."""
@@ -249,7 +249,7 @@ class PrivateRecipeApiTests(TestCase):
             ).exists()
             self.assertTrue(exists)
 
-    def test_crete_tag_on_update(self):
+    def test_create_tag_on_update(self):
         """Test creating tag when updating a recipe."""
         recipe = create_recipe(user=self.user)
 
@@ -335,7 +335,7 @@ class PrivateRecipeApiTests(TestCase):
             ).exists()
             self.assertTrue(exists)
 
-    def test_crete_ingredient_on_update(self):
+    def test_create_ingredient_on_update(self):
         """Test creating an ingredient when updating a recipe."""
         recipe = create_recipe(user=self.user)
 
