@@ -133,6 +133,17 @@ MEDIA_URL = '/static/media/'
 MEDIA_ROOT = '/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
 
+FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+else:
+    STATIC_ROOT = '/vol/web/static'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
